@@ -1,7 +1,45 @@
 /*
  * Create a list that holds all of your cards
  */
+ var cssClasses = [
+   "fa fa-diamond",
+   "fa fa-paper-plane-o",
+   "fa fa-anchor",
+   "fa fa-bolt",
+   "fa fa-cube",
+   "fa fa-anchor",
+   "fa fa-leaf",
+   "fa fa-bicycle",
+   "fa fa-diamond",
+ ]
 
+ var deck = {
+   match: function() {
+
+   },
+   initialize: function() {
+     let idx = 0;
+     cssClasses.forEach(function(cssClass){
+       let card = new card();
+       card.id = idx++;
+       card.cssClass = cssClass;
+       this.cards.push(card);
+     })
+     console.log()
+   },
+   cards: [];
+  }
+
+  var card = {
+    id: numeric = 0,
+    isOpen: boolean = false, // if close then can be opened with click
+    isPaired: boolean = false, //if true then remain open
+    cssClass: string = '',
+  };
+
+// instantiation
+let _deck = new deck()
+_deck.initialize()
 
 /*
  * Display the cards on the page
