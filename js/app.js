@@ -1,45 +1,40 @@
 /*
  * Create a list that holds all of your cards
  */
- var cssClasses = [
-   "fa fa-diamond",
-   "fa fa-paper-plane-o",
-   "fa fa-anchor",
-   "fa fa-bolt",
-   "fa fa-cube",
-   "fa fa-anchor",
-   "fa fa-leaf",
-   "fa fa-bicycle",
-   "fa fa-diamond",
+ const cardClasses = [
+   "fa-diamond",
+   "fa-paper-plane-o",
+   "fa-anchor",
+   "fa-bolt",
+   "fa-cube",
+   "fa-anchor",
+   "fa-leaf",
+   "fa-bicycle",
+   "fa-diamond",
+   "fa-paper-plane-o",
+   "fa-anchor",
+   "fa-bolt",
+   "fa-cube",
+   "fa-anchor",
+   "fa-leaf",
+   "fa-bicycle",
  ]
 
- var deck = {
-   match: function() {
+ //let card = getElementsByClassName('card');
 
-   },
-   initialize: function() {
-     let idx = 0;
-     cssClasses.forEach(function(cssClass){
-       let card = new card();
-       card.id = idx++;
-       card.cssClass = cssClass;
-       this.cards.push(card);
-     })
-     console.log()
-   },
-   cards: [];
-  }
-
-  var card = {
-    id: numeric = 0,
-    isOpen: boolean = false, // if close then can be opened with click
-    isPaired: boolean = false, //if true then remain open
-    cssClass: string = '',
-  };
-
-// instantiation
-let _deck = new deck()
-_deck.initialize()
+ function startGame() {
+    const deckArr = document.getElementsByClassName('deck');
+    const deck = deckArr[0];
+    let cards = shuffle(cardClasses);
+    for (let idx = 0; idx < cards.length; idx++) {
+      let li = document.createElement('LI');
+      li.setAttribute('class', 'card');
+      let i = document.createElement('I');
+      i.setAttribute('class', 'fa ' + cards[idx] );
+      li.appendChild(i);
+      deck.appendChild(li);
+    }
+ }
 
 /*
  * Display the cards on the page
@@ -74,3 +69,4 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+    startGame();
