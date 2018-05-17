@@ -19,15 +19,18 @@
    "fa-leaf",
    "fa-bicycle",
  ]
+
  // Display cards on the page calling shuffle function
  function startGame() {
     const deckArr = document.getElementsByClassName('deck');
     const deck = deckArr[0];
     deck.innerHTML = "";
+
     let cards = shuffle(cardClasses);
     for (let idx = 0; idx < cards.length; idx++) {
       let li = document.createElement('LI');
       li.setAttribute('class', 'card');
+      li.addEventListener('click', flipCard);
       let i = document.createElement('I');
       i.setAttribute('class', 'fa ' + cards[idx] );
       li.appendChild(i);
@@ -50,6 +53,10 @@ function shuffle(array) {
     return array;
 }
 
+function flipCard(evt) {
+  const card = evt.target
+  card.classList.add('card', 'open', 'show');
+}
 
 /*
  * set up the event listener for a card. If a card is clicked:
