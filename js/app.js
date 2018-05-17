@@ -19,12 +19,11 @@
    "fa-leaf",
    "fa-bicycle",
  ]
-
- //let card = getElementsByClassName('card');
-
+ // Display cards on the page calling shuffle function
  function startGame() {
     const deckArr = document.getElementsByClassName('deck');
     const deck = deckArr[0];
+    deck.innerHTML = "";
     let cards = shuffle(cardClasses);
     for (let idx = 0; idx < cards.length; idx++) {
       let li = document.createElement('LI');
@@ -35,13 +34,6 @@
       deck.appendChild(li);
     }
  }
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -69,4 +61,4 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-    startGame();
+//    startGame();
