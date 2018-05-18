@@ -21,6 +21,9 @@
 
  let openCards = [];
  let moves = 0;
+ const oneStar = 37;
+ const twoStars = 36;
+ const threeStars = 18;
 
   // Display cards on the page calling shuffle function
   function startGame() {
@@ -79,6 +82,7 @@
 // Match cards - if cards match, lock in open position, if not close card
 // Empty openCards list for next set of cards
   function matchCards() {
+    moveCounter();
 
     if (openCards.length == 2) {
 
@@ -91,6 +95,7 @@
         openCards = [];
 
         if (isGameOver()) {
+          computeStars();
           setTimeout(function() {
             alert('Game Over');
           }, 100);
@@ -114,12 +119,22 @@
     return false;
   }
 
+  function computeStars() {
+    let stars = document.getElementById('stars');
+
+    if (moves >= oneStar) {
+      stars.innerHTML = "<li><i class='fa fa-star'></i></li>";
+    } else if (moves <= twoStars) {
+      stars.innerHTML = "<li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li>";
+    } else if (moves <= threeStars) {
+      stars.innerHTML = "<li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li>";
+    }
+  }
+
   function moveCounter() {
 
-    let movesDisplay = document.getElementsByClassName('moves');
-    let evt = document.getElementsByClassName('card').onclick;
-    moves++;
-    movesDisplay.innerHTML = moves;
+    let movesDisplay = document.getElementById('moves');
+    movesDisplay.innerHTML = ++moves;
   }
 
 function timer() {
