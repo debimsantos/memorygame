@@ -20,6 +20,8 @@
    "fa-bicycle",
  ]
 
+ let openCards = [];
+
  // Display cards on the page calling shuffle function
  function startGame() {
     const deckArr = document.getElementsByClassName('deck');
@@ -30,7 +32,7 @@
     for (let idx = 0; idx < cards.length; idx++) {
       let li = document.createElement('LI');
       li.setAttribute('class', 'card');
-      li.addEventListener('click', flipCard);
+      li.addEventListener('click', openCard);
       let i = document.createElement('I');
       i.setAttribute('class', 'fa ' + cards[idx] );
       li.appendChild(i);
@@ -53,9 +55,49 @@ function shuffle(array) {
     return array;
 }
 
-function flipCard(evt) {
+// display card's symbol
+function openCard(evt) {
   const card = evt.target
-  card.classList.add('card', 'open', 'show');
+
+  if (card.classList.contains('match')) {
+    return;
+  }
+
+  card.classList.add('card','show');
+  addToOpenCards(card);
+}
+
+// add open cards to a list
+function addToOpenCards(card) {
+  if (openCards.length < 2) {
+    openCards.push(card);
+  }
+
+  matchCards();
+}
+
+// Match cards - if cards match, lock in open position, if not close card
+// Empty openCards list for next set of cards
+function matchCards() {
+
+  if (openCards.length == 2) {
+
+    let li1 = openCards[0].childNodes[0];
+    let li2 = openCards[1].childNodes[0];
+
+    if (li1.className === li2.className) {
+      openCards[0].classList.add('match');
+      openCards[1].classList.add('match');
+      openCards = [];
+    } else {
+      setTimeout(function() {
+        // delay closing of unmatched cards by half a second
+        openCards[0].classList.remove('show', 'open');
+        openCards[1].classList.remove('show', 'open');
+        openCards = [];
+      }, 500);
+    }
+  }
 }
 
 /*
