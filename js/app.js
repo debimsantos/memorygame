@@ -26,11 +26,14 @@
  const threeStars = 18;
  let timeStart = 0;
  let movesDisplay = document.getElementById('moves');
+ let stars = document.getElementById('stars');
 
   // Display cards on the page calling shuffle function
   function startGame() {
     moves = 0;
     movesDisplay.innerHTML = moves;
+
+    stars.innerHTML = "<li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li>";
 
     const deckArr = document.getElementsByClassName('deck');
     const deck = deckArr[0];
@@ -127,7 +130,6 @@
 
   // Assign stars based on number of moves until game is won
   function computeStars() {
-    let stars = document.getElementById('stars');
 
     if (moves >= oneStar) {
       stars.innerHTML = "<li><i class='fa fa-star'></i></li>";
