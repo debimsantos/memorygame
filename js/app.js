@@ -24,9 +24,14 @@
  const oneStar = 37;
  const twoStars = 36;
  const threeStars = 18;
+ let timeStart = 0;
+ let movesDisplay = document.getElementById('moves');
 
   // Display cards on the page calling shuffle function
   function startGame() {
+    moves = 0;
+    movesDisplay.innerHTML = moves;
+
     const deckArr = document.getElementsByClassName('deck');
     const deck = deckArr[0];
     deck.innerHTML = "";
@@ -111,6 +116,7 @@
     }
   }
 
+  // Check if all cards are matched to end game
   function isGameOver() {
     const matchedArr = document.getElementsByClassName('match');
     if (matchedArr.length == 16) {
@@ -119,6 +125,7 @@
     return false;
   }
 
+  // Assign stars based on number of moves until game is won
   function computeStars() {
     let stars = document.getElementById('stars');
 
@@ -131,19 +138,16 @@
     }
   }
 
+  // Counter for the number of attempts to match cards
   function moveCounter() {
 
-    let movesDisplay = document.getElementById('moves');
+    //here used to be the --> let movesDisplay = document.getElementById('moves');
     movesDisplay.innerHTML = ++moves;
   }
 
-function timer() {
+  function timer() {
 
-}
-
-function starRating() {
-
-}
+  }
 
 
 
