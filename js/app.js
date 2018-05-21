@@ -27,11 +27,12 @@
  let movesDisplay = document.getElementById('moves');
  let stars = document.getElementById('stars');
  let displayTimer = document.getElementById('timer');
+ let seconds = 0;
+ let timer = null;
 
   // Display cards on the page calling shuffle function
   function startGame() {
-    seconds = 0;
-
+    restartTimer();
     moves = 0;
     movesDisplay.innerHTML = moves;
 
@@ -51,8 +52,6 @@
       li.appendChild(i);
       deck.appendChild(li);
     }
-
-      startTimer();
   }
 
   // Shuffle function from http://stackoverflow.com/a/2450976
@@ -72,6 +71,7 @@
 
 // display card's symbol
   function openCard(evt) {
+    startTimer();
     const card = evt.target
 
     if (card.classList.contains('match')) {
@@ -154,7 +154,9 @@
   }
 
   function startTimer() {
-		var seconds = 0;
+    if (timer !== null) {
+      return;
+    }
 		timer = setInterval(function() {
 			seconds ++;
 			document.getElementById("sec").innerText = seconds % 60;
@@ -164,7 +166,15 @@
 
 	function endTimer() {
 		clearInterval(timer);
+    timer = null;
+    seconds = 0;
 	}
+
+  function restartTimer() {
+    endTimer();
+    document.getElementById("sec").innerText = 0;
+    document.getElementById("min").innerText = 0 + ":";
+  }
 
 
 
