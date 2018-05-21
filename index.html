@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Matching Game</title>
     <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet" href="css/app.css">
@@ -29,63 +30,36 @@
         	  </div>
             <div class="timer">
               Timer:
-              <span id="min">0 :</span>
-              <span id="sec">0</span>
+              <span id="min">0</span> minutes and
+              <span id="sec">0</span> seconds
             </div>
         </section>
 
         <ul class="deck">
-        <!--    <li class="card">
-                <i class="fa fa-diamond"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-paper-plane-o"></i>
-            </li>
-            <li class="card match">
-                <i class="fa fa-anchor"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-bolt"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-cube"></i>
-            </li>
-            <li class="card match">
-                <i class="fa fa-anchor"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-leaf"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-bicycle"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-diamond"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-bomb"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-leaf"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-bomb"></i>
-            </li>
-            <li class="card open show">
-                <i class="fa fa-bolt"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-bicycle"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-paper-plane-o"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-cube"></i>
-            </li> -->
         </ul>
     </div>
+    <!-- Modal section. For displaying game info at end of game. -->
+    <div class="modal" id="modal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
 
+          <h1>Awesome Job!</h1>
+          <h2>You earned
+            <ul class="modalstars" id="modalstars">
+              <li><i class="fa fa-star"></i></li>
+              <li><i class="fa fa-star"></i></li>
+              <li><i class="fa fa-star"></i></li>
+            </ul>
+            stars
+          </h2>
+          <h2> for finishing the game in
+            <span id="modalmoves">0</span> moves and in
+            <span id="modalmin">0</span> minutes and
+            <span id="modalsec">0</span> seconds
+          </h2>
+
+      </div>
+    </div>
     <script src="js/app.js"></script>
 </body>
 </html>

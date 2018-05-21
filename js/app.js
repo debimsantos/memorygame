@@ -19,21 +19,29 @@
    "fa-bicycle",
  ]
 
- let openCards = [];
- let moves = 0;
  const oneStar = 37;
  const twoStars = 36;
  const threeStars = 18;
- let movesDisplay = document.getElementById('moves');
- let stars = document.getElementById('stars');
- let displayTimer = document.getElementById('timer');
+
+ let openCards = [];
+ let moves = 0;
  let seconds = 0;
  let timer = null;
 
-  // Display cards on the page calling shuffle function
-  function startGame() {
-    restartTimer();
-    moves = 0;
+ let movesDisplay = document.getElementById('moves');
+ let stars = document.getElementById('stars');
+ let displayTimer = document.getElementById('timer');
+ let modal = document.getElementById('modal');
+ let span = document.getElementsByClassName("close")[0];
+ let modalstars = document.getElementById('modalstars');
+ let modalsec = document.getElementById('modalsec');
+ let modalmin = document.getElementById('modalmin');
+ let modalmoves = document.getElementById('modalmoves');
+
+ // Display cards on the page calling shuffle function
+ function startGame() {
+   restartTimer();
+   moves = 0;
     movesDisplay.innerHTML = moves;
 
     stars.innerHTML = "<li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li>";
@@ -108,9 +116,11 @@
 
         if (isGameOver()) {
           endTimer();
-          computeStars();
-          setTimeout(function() {
-            alert('Game Over');
+          computeStars(stars);
+          let timeout = setTimeout(function() {
+//            alert('Game Over');
+              clearInterval(timeout);
+              openModal();
           }, 100);
         }
       } else {
@@ -135,21 +145,20 @@
   }
 
   // Assign stars based on number of moves until game is won
-  function computeStars() {
+  function computeStars(_stars) {
 
     if (moves >= oneStar) {
-      stars.innerHTML = "<li><i class='fa fa-star'></i></li>";
+      _stars.innerHTML = "<li><i class='fa fa-star'></i></li>";
     } else if (moves <= twoStars) {
-      stars.innerHTML = "<li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li>";
+      _stars.innerHTML = "<li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li>";
     } else if (moves <= threeStars) {
-      stars.innerHTML = "<li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li>";
+      _stars.innerHTML = "<li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li>";
     }
   }
 
   // Counter for the number of attempts to match cards
   function moveCounter() {
 
-    //here used to be the --> let movesDisplay = document.getElementById('moves');
     movesDisplay.innerHTML = ++moves;
   }
 
@@ -160,33 +169,36 @@
 		timer = setInterval(function() {
 			seconds ++;
 			document.getElementById("sec").innerText = seconds % 60;
-			document.getElementById("min").innerText = parseInt(seconds / 60) + ":";
+			document.getElementById("min").innerText = parseInt(seconds / 60);
 		}, 1000);
   }
 
 	function endTimer() {
 		clearInterval(timer);
-    timer = null;
-    seconds = 0;
 	}
 
+  function resetTimer() {
+    timer = null;
+    seconds = 0;
+  }
+
   function restartTimer() {
+    resetTimer();
     endTimer();
     document.getElementById("sec").innerText = 0;
-    document.getElementById("min").innerText = 0 + ":";
+    document.getElementById("min").innerText = 0;
   }
 
 
+  function openModal() {
+    modalsec.innerText = seconds % 60;
+    modalmin.innerText = parseInt(seconds / 60);
+    modalmoves.innerText = moves;
+    computeStars(modalstars);
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
 
-
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+    modal.classList.add("show-modal");
+  }
