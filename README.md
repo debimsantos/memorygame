@@ -13,29 +13,32 @@ If the cards do not match, both cards are flipped face down.
 The game ends once all cards have been correctly matched.
 
 #### Congratulations Popup
-When a user wins the game, a modal appears to congratulate the player and ask if they want to play again. It should also tell the user how much time it took to win the game, and what the star rating was.
+When the all cards are watched, a modal appears to congratulate user. Display will show star rating, time it took to finish the game and the number of moves made.
 
 #### Restart Button
-A restart button allows the player to reset the game board, the timer, and the star rating.
+User can clear the board and start all over again. Clear timer, star rating, moves and previously matched cards.
 
 #### Star Rating
-The game displays a star rating (from 1 to at least 3) that reflects the player's performance. At the beginning of a game, it should display at least 3 stars. After some number of moves, it should change to a lower star rating. After a few more moves, it should change to a even lower star rating (down to 1).
+Star rating is reflective of the number of moves the player made.
 
 #### Timer
-When the player starts a game, a displayed timer should also start. Once the player wins the game, the timer stops.
+The game is timed. The timer starts when the player flips a card and ends when all cards are matched.
 
 #### Move Counter
-Game displays the current number of moves a user has made.
+Every move a player makes is recorded and displayed on the counter.
 
-
-### Additional functionalties
+### Additional functionalities
 1. Simulate actual flipping of cards
-2. Card color changes and other effects when 2 cards match 
+2. Card color changes and other effects when 2 cards match
 3. Visual effects when cards do not match
 4. Indicator when game is finished
 5. Star scoring effects
 
 ## Development Tools / Language
 CSS, HTML and javascript
+
+## Dependencies
+1. Font Awesome for the card design and stars
+2. Google Fonts for Coda
 
 ## Implementation URL: (TBD)
