@@ -19,9 +19,9 @@
    "fa-bicycle",
  ]
 
- const oneStar = 37;
- const twoStars = 36;
- const threeStars = 18;
+ const oneStar = 45;
+ const twoStars = 44;
+ const threeStars = 36;
 
  let openCards = [];
  let moves = 0;
@@ -41,7 +41,11 @@
 
  // Display cards on the page calling shuffle function
  function startGame() {
+    endTimer();
     restartTimer();
+
+    openCards = [];
+
     moves = 0;
     movesDisplay.innerHTML = moves;
 
