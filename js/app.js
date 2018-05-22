@@ -41,8 +41,8 @@
 
  // Display cards on the page calling shuffle function
  function startGame() {
-   restartTimer();
-   moves = 0;
+    restartTimer();
+    moves = 0;
     movesDisplay.innerHTML = moves;
 
     stars.innerHTML = "<li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li>";
