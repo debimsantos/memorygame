@@ -37,6 +37,7 @@
  let modalsec = document.getElementById('modalsec');
  let modalmin = document.getElementById('modalmin');
  let modalmoves = document.getElementById('modalmoves');
+ let button = document.getElementById('button')
 
  // Display cards on the page calling shuffle function
  function startGame() {
@@ -202,3 +203,9 @@
 
     modal.classList.add("show-modal");
   }
+
+    button.addEventListener('click', function() {
+      modal.classList.toggle('show-modal');
+      startGame();
+    }
+  );
