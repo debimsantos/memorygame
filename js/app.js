@@ -19,9 +19,9 @@
    "fa-bicycle",
  ]
 
- const oneStar = 45;
- const twoStars = 44;
- const threeStars = 36;
+ const stars3 = 16;
+ const stars2 = 20;
+ const stars1 = 24;
 
  let openCards = [];
  let moves = 0;
@@ -30,6 +30,7 @@
 
  let movesDisplay = document.getElementById('moves');
  let stars = document.getElementById('stars');
+ let starCount = 3;
  let displayTimer = document.getElementById('timer');
  let modal = document.getElementById('modal');
  let span = document.getElementsByClassName("close")[0];
@@ -82,8 +83,9 @@
       return array;
   }
 
-// display card's symbol
+// Display card's symbol when clicked
   function openCard(evt) {
+
     startTimer();
     const card = evt.target
 
@@ -92,10 +94,13 @@
     }
 
     card.classList.add('card','show');
+
     addToOpenCards(card);
+    reduceStars();
   }
 
-// add open cards to a list
+
+// Add open cards to a list
   function addToOpenCards(card) {
     if (openCards.length < 2) {
       openCards.push(card);
@@ -105,7 +110,6 @@
   }
 
 // Match cards - if cards match, lock in open position, if not close card
-// Empty openCards list for next set of cards
   function matchCards() {
     moveCounter();
 
@@ -121,7 +125,6 @@
 
         if (isGameOver()) {
           endTimer();
-          computeStars(stars);
           let timeout = setTimeout(function() {
 //            alert('Game Over');
               clearInterval(timeout);
@@ -149,24 +152,26 @@
     return false;
   }
 
-  // Assign stars based on number of moves until game is won
-  function computeStars(_stars) {
-
-    if (moves >= oneStar) {
-      _stars.innerHTML = "<li><i class='fa fa-star'></i></li>";
-    } else if (moves <= twoStars) {
-      _stars.innerHTML = "<li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li>";
-    } else if (moves <= threeStars) {
-      _stars.innerHTML = "<li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li>";
-    }
-  }
-
   // Counter for the number of attempts to match cards
   function moveCounter() {
-
     movesDisplay.innerHTML = ++moves;
   }
 
+  // Assign stars based on number of moves until game is won
+  function reduceStars() {
+      let _star = document.querySelectorAll('li');
+      if (moves === 16) {
+        _star[0].style.display="none";
+        numStar = "<li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li>";
+      } else if (moves === 20) {
+        _star[1].style.display="none";
+        numStar = "<li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li>";
+      } else {
+        return;
+      }
+  }
+
+  // Timer function
   function startTimer() {
     if (timer !== null) {
       return;
@@ -199,7 +204,8 @@
     modalsec.innerText = seconds % 60;
     modalmin.innerText = parseInt(seconds / 60);
     modalmoves.innerText = moves;
-    computeStars(modalstars);
+    modalstars.innerHTML = numStar;
+
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
