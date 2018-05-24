@@ -40,7 +40,7 @@
  let modalmoves = document.getElementById('modalmoves');
  let button = document.getElementById('button')
 
- // Display cards on the page calling shuffle function
+ // Initialize game by clearing old game values
  function startGame() {
     endTimer();
     restartTimer();
@@ -52,6 +52,7 @@
 
     stars.innerHTML = "<li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li>";
 
+    // Card HTML is created by calling shuffle fxn on deck
     const deckArr = document.getElementsByClassName('deck');
     const deck = deckArr[0];
     deck.innerHTML = "";
@@ -83,7 +84,7 @@
       return array;
   }
 
-// Display card's symbol when clicked
+  // Display card's symbol when clicked
   function openCard(evt) {
 
     startTimer();
@@ -92,22 +93,19 @@
     if (card.classList.contains('match')) {
       return;
     }
-
-    card.classList.add('card','show');
-
+    card.classList.add('show');
     addToOpenCards(card);
     reduceStars();
   }
 
-
-// Add open cards to a list
+  // Add open cards to a list
   function addToOpenCards(card) {
     if (openCards.length < 2) {
       openCards.push(card);
     }
-
-    matchCards();
+      matchCards();
   }
+
 
 // Match cards - if cards match, lock in open position, if not close card
   function matchCards() {
@@ -126,7 +124,6 @@
         if (isGameOver()) {
           endTimer();
           let timeout = setTimeout(function() {
-//            alert('Game Over');
               clearInterval(timeout);
               openModal();
           }, 100);
@@ -199,7 +196,7 @@
     document.getElementById("min").innerText = 0;
   }
 
-
+  // Modal pops up when game is over to show time, moves, star
   function openModal() {
     modalsec.innerText = seconds % 60;
     modalmin.innerText = parseInt(seconds / 60);
@@ -214,6 +211,7 @@
     modal.classList.add("show-modal");
   }
 
+    // Play Again button
     button.addEventListener('click', function() {
       modal.classList.toggle('show-modal');
       startGame();
