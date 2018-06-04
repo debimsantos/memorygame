@@ -2,11 +2,13 @@ html {
     box-sizing: border-box;
 }
 
+
 *,
 *::before,
 *::after {
     box-sizing: inherit;
 }
+
 
 html,
 body {
@@ -16,10 +18,32 @@ body {
     padding: 0;
 }
 
+
 body {
     background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
 }
+
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    text-align: center;
+}
+
+
+h2 {
+    font: bolder 36px monospace;
+    text-align: center;
+}
+
+
+h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    text-align: center;
+}
+
 
 .container {
     display: flex;
@@ -28,25 +52,6 @@ body {
     flex-direction: column;
 }
 
-h1 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-    text-align: center;
-}
-
-h2 {
-    font-family: monospace;
-    font-weight: bolder;
-    font-size: 36px;
-    text-align: center;
-}
-
-h3 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    text-align: center;
-
-}
 
 /*
  * Styles for the deck of cards
@@ -66,12 +71,13 @@ h3 {
     margin: 0 0 3em;
 }
 
+
 .deck .card {
     height: 125px;
     width: 125px;
     background: #2e3d49;
     font-size: 0;
-    color: #ffffff;
+    color: #fff;
     border-radius: 8px;
     cursor: pointer;
     display: flex;
@@ -80,17 +86,20 @@ h3 {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
+
 .deck .card.open {
-    transform: rotateY(0);
+    /* transform: rotateY(0); TODO: animate card */
     background: #02b3e4;
     cursor: default;
     pointer-events: none;
 }
 
+
 .deck .card.show {
     font-size: 33px;
     pointer-events: none;
 }
+
 
 .deck .card.match {
     cursor: default;
@@ -98,6 +107,7 @@ h3 {
     font-size: 33px;
     pointer-events: none;
 }
+
 
 /*
  * Styles for the Score Panel
@@ -109,12 +119,13 @@ h3 {
     margin-bottom: 15px;
 }
 
+
 .score-panel .stars {
-    margin: 0 10px;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
 }
+
 
 .score-panel .stars li {
     list-style: none;
@@ -126,10 +137,12 @@ h3 {
     padding: 0;
 }
 
+
 .score-panel .timer {
     margin: 0 10px;
     padding: 0;
 }
+
 
 .score-panel .restart {
     float: none;
@@ -137,6 +150,11 @@ h3 {
     margin: 0 10px;
     padding: 12px;
 }
+
+
+/*
+ * Styles for the Modal
+ */
 
 .modal {
     position: fixed;
@@ -149,8 +167,8 @@ h3 {
     visibility: hidden;
     transform: scale(1.1);
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
-
 }
+
 
 .modal-content {
     position: absolute;
@@ -166,6 +184,7 @@ h3 {
     text-align: center;
 }
 
+
 .close {
     float: right;
     width: 1.5rem;
@@ -175,9 +194,12 @@ h3 {
     border-radius: 0.25rem;
     background-color: lightgray;
 }
+
+
 .close:hover {
     background-color: darkgray;
 }
+
 
 .show-modal {
     opacity: 1;
@@ -186,12 +208,24 @@ h3 {
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
+
 .modalstars {
-    /* margin-bottom: 10px; */
     margin: auto;
     font-size: 36px;
-    color: #FFCC00;
+    color: #fc0;
 }
+
+
+.fa fa-star {
+    text-align: center;
+}
+
+
+.button-group {
+    width: 100%;
+    text-align: center;
+}
+
 
 #modalstars.modalstars li {
     list-style: none;
@@ -201,15 +235,6 @@ h3 {
     text-align: center;
 }
 
-.fa fa-star {
-  text-align: center;
-}
-
-
-.button-group {
-    width: 100%;
-    text-align: center;
-}
 
 #button {
     background-color: #02b3e4;
@@ -222,10 +247,13 @@ h3 {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    margin: auto;
+    margin: 20px;
 }
 
-/* Media query target devices are Nexus 5 and iPhone 6,7,8 */
+
+/*
+ * Media Query styles. Target devices Nexus 5, iphone 6/7/8, iPad, desktop
+ */
 
 @media screen and (max-width: 360px) {
     .deck {
@@ -258,6 +286,7 @@ h3 {
         text-align: center;
     }
 }
+
 
 @media screen and (max-width: 375px) {
     .deck {

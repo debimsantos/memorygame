@@ -40,7 +40,7 @@
  let modalmoves = document.getElementById('modalmoves');
  let button = document.getElementById('button')
 
- // Initialize game by clearing old game values
+ // Initialize game by clearing old game values (time, stars, moves)
  function startGame() {
     endTimer();
     restartTimer();
@@ -168,27 +168,31 @@
       }
   }
 
-  // Timer function
+  // Timer functionf or when card is clicked
   function startTimer() {
     if (timer !== null) {
       return;
     }
 		timer = setInterval(function() {
 			seconds ++;
+      // Converting time into seconds and minutes
 			document.getElementById("sec").innerText = seconds % 60;
 			document.getElementById("min").innerText = parseInt(seconds / 60);
 		}, 1000);
   }
 
+  // Timer ends for when game is won
 	function endTimer() {
 		clearInterval(timer);
 	}
 
+  // Clear all timer data
   function resetTimer() {
     timer = null;
     seconds = 0;
   }
 
+  // Timer restarts everytime startGame is called
   function restartTimer() {
     resetTimer();
     endTimer();
@@ -211,7 +215,7 @@
     modal.classList.add("show-modal");
   }
 
-    // Play Again button
+    // Play Again button invokes startGame function
     button.addEventListener('click', function() {
       modal.classList.toggle('show-modal');
       startGame();
