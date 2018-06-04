@@ -175,7 +175,8 @@
     }
 		timer = setInterval(function() {
 			seconds ++;
-      // Converting time into seconds and minutes
+      // Converting time into seconds and minutes modified from
+      //https://appfurnace.zendesk.com/hc/en-us/community/posts/255456346-Create-a-countdown-timer-
 			document.getElementById("sec").innerText = seconds % 60;
 			document.getElementById("min").innerText = parseInt(seconds / 60);
 		}, 1000);
