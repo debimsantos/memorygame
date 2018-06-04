@@ -168,7 +168,7 @@
       }
   }
 
-  // Timer functionf or when card is clicked
+  // Timer function for when card is clicked
   function startTimer() {
     if (timer !== null) {
       return;
