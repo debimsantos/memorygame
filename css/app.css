@@ -265,8 +265,8 @@ h3 {
     }
 
     .deck .card {
-        height: 60px;
-        width: 60px;
+        height: 16.5vw;
+        width: 16.5vw;
         padding: 0;
         margin: 0;
     }
@@ -288,7 +288,7 @@ h3 {
 }
 
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 425px) {
     .deck {
         width: 95%;
         max-height: 356px;
@@ -298,8 +298,8 @@ h3 {
     }
 
     .deck .card {
-        height: 18vw;
-        width: 18vw;
+        height: 18.5vw;
+        width: 18.5vw;
     }
 
     .score-panel {
