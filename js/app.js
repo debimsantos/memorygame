@@ -93,7 +93,7 @@
     if (card.classList.contains('match')) {
       return;
     }
-    card.classList.add('show');
+    card.classList.add('show','open');
     addToOpenCards(card);
     reduceStars();
   }
