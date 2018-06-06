@@ -109,9 +109,9 @@
 
 // Match cards - if cards match, lock in open position, if not close card
   function matchCards() {
-    moveCounter();
 
     if (openCards.length == 2) {
+      moveCounter();
 
       let li1 = openCards[0].childNodes[0];
       let li2 = openCards[1].childNodes[0];
